@@ -1,18 +1,29 @@
 %{
-/* The quick brown fox jumped the lazy yellow dog.
-All Gaul is divided into three parts. */
+
 #include <stdio.h>
+
 %}
 
 %option yylineno
 %option noyywrap
 
+DIGITS   [0-9]+
+STRLIT  [\"a-zA-Z][a-zA-Z0-9\"]*
+
 %%
 
-[ \t\n]+    { /* skip */ }
-[a-zA-Z]+	{ return 4; }
-"{"         { return 123; }
-"}"         { return 125; }
-";"         { return 59; }
-":"         { return 58; }
+[ \t\n]+        { /* skip */ }
+[TRUE]          { return 1; }
+[FALSE]         { return 2; }
+[NULL]          { return 3; }
+{STRLIT}	    { return 4; }
+{DIGITS}        { return 6; }
+\{              { return '{'; }
+\}              { return '}'; }
+\[              { return '['; }
+\]              { return ']'; }
+\,              { return ','; }
+\:              { return ':'; }
+.		        { printf("lexical error on line %d\n", yylineno); }
+
 %%

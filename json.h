@@ -10,5 +10,4 @@
 #define LBRACKET '['
 #define RBRACKET ']'
 #define STRINGLIT 4
-#define CHARLIT 5
 #define NUMBER 6
