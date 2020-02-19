@@ -2,8 +2,8 @@
     "name": "Clint",
     "age": 54,
     "cars": {
-        "car1": "Ford",
-        "car2": "Pontiac",
-        "car3": "Pontiac"
+        "car1": "Volkswagen",
+        "car2": "Audi",
+        "car3": "BMW"
     }
 }
