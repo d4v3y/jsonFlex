@@ -1,5 +1,12 @@
 %{
 
+/*
+    Davey Anguiano
+    Clinton Jeffery
+    CS 210
+    01/29/20
+*/
+
 #include <stdio.h>
 
 %}
@@ -7,17 +14,17 @@
 %option yylineno
 %option noyywrap
 
-DIGITS   [0-9]+
-STRLIT  [\"a-zA-Z][a-zA-Z0-9\"]*
+DIGITS   [#0-9a-zA-Z.\-\+ ]+
+STRLIT   [ \-\\\_a-zA-Z0-9\".\/]*
 
 %%
 
-[ \t\n]+        { /* skip */ }
-[TRUE]          { return 1; }
-[FALSE]         { return 2; }
-[NULL]          { return 3; }
-{STRLIT}	    { return 4; }
-{DIGITS}        { return 6; }
+[ \t\n]+        { /* skip */ }  // Ignore whitespace
+{STRLIT}	    { return 4; }   // String token
+{DIGITS}        { return 6; }   // Literial digit
+'null'          { return 3; }
+'true'          { return 1; }
+'false'         { return 2; }   
 \{              { return '{'; }
 \}              { return '}'; }
 \[              { return '['; }
